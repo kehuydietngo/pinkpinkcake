@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#63383f">
+<title>Pink Pink Cake</title>
+<style>
+  :root{--bg:#f6eeee;--card:#fff;--ink:#2b2325;--muted:#7c6c6f;--brand:#63383f}
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:16px;line-height:1.5;display:flex;align-items:center;justify-content:center;padding:24px 16px}
+  main{width:100%;max-width:420px;text-align:center}
+  h1{font-family:Optima,Candara,"Segoe UI",serif;font-weight:400;font-size:32px;letter-spacing:.06em;margin:0 0 6px;color:var(--brand)}
+  p{margin:0 0 20px;color:var(--muted)}
+  a.go{display:block;text-decoration:none;background:var(--brand);color:#fff;font-weight:600;font-size:18px;padding:16px 18px;border-radius:12px}
+  small{display:block;margin-top:18px;color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+<main>
+  <h1>Pink Pink Cake</h1>
+  <p id="msg">Đang mở trang tìm sản phẩm…</p>
+  <a class="go" id="go" href="https://travels-msie-configure-negotiation.trycloudflare.com">Mở trang tìm sản phẩm</a>
+  <small>Nếu trang không tự mở, bấm nút ở trên. Link cập nhật lúc 08:14 ngày 06/10/2026.</small>
+</main>
+<script>
+  // Always read the newest link (link.txt is refreshed by the server whenever its address changes).
+  var go = document.getElementById("go");
+  function open(url) { go.href = url; location.replace(url); }
+  fetch("link.txt?t=" + Date.now(), {cache: "no-store"})
+    .then(function (r) { return r.ok ? r.text() : ""; })
+    .then(function (t) { t = t.trim(); open(/^https:\/\/[a-z0-9.-]+$/.test(t) ? t : go.href); })
+    .catch(function () { open(go.href); });
+</script>
+</body>
+</html>
